@@ -89,7 +89,7 @@ const Website = () => {
         <footer className="bg-white/80 backdrop-blur-sm">
           <div className="max-w-6xl mx-auto px-4 py-6">
             <div className="flex justify-between items-center text-sm text-gray-600">
-              <span>© 2025 Nephele</span>
+              <span>© 2024-2025 Nephele Interactive. All Right Reserved.</span>
               <div className="space-x-4">
                 <a href="/tos" className="hover:text-pink-400">Terms of Service</a>
                 <a href="/privacy" className="hover:text-pink-400">Privacy Policy</a>
