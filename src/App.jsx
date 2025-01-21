@@ -1,6 +1,6 @@
 import React from 'react';
 import { Twitter, Crown, MessageCircle, Heart } from 'lucide-react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Website = () => {
   const location = useLocation();
