@@ -28,6 +28,9 @@ const Nav = () => {
 
         {showMenu && (
           <div className="md:hidden absolute w-full left-0 bg-white shadow-lg">
+            <button onClick={() => nav('/home')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
+              Home
+            </button>
             <button onClick={() => nav('/premium')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
               Premium
             </button>
@@ -35,10 +38,10 @@ const Nav = () => {
               Support
             </button>
             <button onClick={() => nav('/tos')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
-              Terms
+              Terms of Services 
             </button>
             <button onClick={() => nav('/privacy')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
-              Privacy
+              Privacy Policy 
             </button>
           </div>
         )}
