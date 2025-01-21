@@ -1,16 +1,9 @@
 import React from 'react';
-import { Heart, Twitter, Bot, Crown, MessageCircle } from 'lucide-react';
+import { Twitter, Crown, MessageCircle, Heart } from 'lucide-react';
 
 const Website = () => {
   const [currentPage, setCurrentPage] = React.useState('home');
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
-  const theme = {
-    primary: '#89CFF0', // Pastel blue
-    secondary: '#FFB7C5', // Pastel pink
-    accent: '#FFF', // White
-    text: '#4A4A4A', // Dark gray
-  };
 
   const renderContent = () => {
     switch (currentPage) {
@@ -36,7 +29,12 @@ const Website = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
-              <Bot className="w-8 h-8 text-pink-400" />
+              {/* Updated to use favicon.ico */}
+              <img
+                src="/favicon.ico"
+                alt="Nephele Logo"
+                className="w-8 h-8"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent">
                 Nephele
               </span>
