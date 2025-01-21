@@ -1,12 +1,15 @@
 import React from 'react';
 import { Twitter, Crown, MessageCircle, Heart } from 'lucide-react';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const Website = () => {
-  const [currentPage, setCurrentPage] = React.useState('home');
+  const location = useLocation();
+  const history = useHistory();
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
   const renderContent = () => {
-    switch (currentPage) {
+    const path = location.pathname.slice(1); // Remove leading slash
+    switch (path) {
       case 'home':
         return <Home />;
       case 'tos':
@@ -20,6 +23,10 @@ const Website = () => {
       default:
         return <Home />;
     }
+  };
+
+  const handlePageChange = (page) => {
+    history.push(`/${page}`);
   };
 
   return (
@@ -40,13 +47,13 @@ const Website = () => {
               </span>
             </div>
             <div className="hidden md:flex space-x-8">
-              {['Home', 'TOS', 'Privacy', 'Premium', 'Support'].map((item) => (
+              {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
                 <button
                   key={item}
-                  onClick={() => setCurrentPage(item.toLowerCase())}
+                  onClick={() => handlePageChange(item)}
                   className="text-gray-600 hover:text-pink-400 transition-colors"
                 >
-                  {item}
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
                 </button>
               ))}
             </div>
@@ -61,16 +68,16 @@ const Website = () => {
           </div>
           {showMobileMenu && (
             <div className="md:hidden bg-white shadow-lg rounded-lg mt-2">
-              {['Home', 'TOS', 'Privacy', 'Premium', 'Support'].map((item) => (
+              {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
                 <button
                   key={item}
                   onClick={() => {
-                    setCurrentPage(item.toLowerCase());
+                    handlePageChange(item);
                     setShowMobileMenu(false);
                   }}
                   className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400 transition-colors"
                 >
-                  {item}
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
                 </button>
               ))}
             </div>
@@ -169,7 +176,7 @@ const TOS = () => (
 
         <h3 className="text-xl font-semibold">6. Contact Information</h3>
         <p className="text-gray-600">
-          If you have any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@nephele.in.th" className="text-blue-500 hover:underline">support@nephele.in.th</a>.
+          If you have any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@service.nephele.in.th" className="text-blue-500 hover:underline">support@service.nephele.in.th</a>.
         </p>
       </div>
     </div>
@@ -224,7 +231,7 @@ const Privacy = () => (
 
         <h3 className="text-xl font-semibold">6. Contact Information</h3>
         <p className="text-gray-600">
-          If you have any questions or concerns about your privacy, please contact us at <a href="mailto:support@nephele.in.th" className="text-blue-500 hover:underline">support@nephele.in.th</a>.
+          If you have any questions or concerns about your privacy, please contact us at <a href="mailto:support@service.nephele.in.th" className="text-blue-500 hover:underline">support@service.nephele.in.th</a>.
         </p>
       </div>
     </div>
