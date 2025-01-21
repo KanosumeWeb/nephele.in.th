@@ -38,7 +38,7 @@ const Nav = () => {
               Support
             </button>
             <button onClick={() => nav('/tos')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
-              Terms of Services 
+              Terms of Service
             </button>
             <button onClick={() => nav('/privacy')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
               Privacy Policy 
@@ -91,7 +91,7 @@ const Website = () => {
             <div className="flex justify-between items-center text-sm text-gray-600">
               <span>© 2025 Nephele</span>
               <div className="space-x-4">
-                <a href="/tos" className="hover:text-pink-400">Terms of Services</a>
+                <a href="/tos" className="hover:text-pink-400">Terms of Service</a>
                 <a href="/privacy" className="hover:text-pink-400">Privacy Policy</a>
               </div>
             </div>
