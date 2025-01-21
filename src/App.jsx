@@ -226,7 +226,7 @@ const Privacy = () => (
 
         <h3 className="text-xl font-semibold">5. User Rights</h3>
         <p className="text-gray-600">
-          You have the right to request access to your data, request updates to your data, or request deletion of your data. To do so, please contact us at <a href="mailto:support@nephele.in.th" className="text-blue-500 hover:underline">support@nephele.in.th</a>.
+          You have the right to request access to your data, request updates to your data, or request deletion of your data. To do so, please contact us at <a href="mailto:support@service.nephele.in.th" className="text-blue-500 hover:underline">support@service.nephele.in.th</a>.
         </p>
 
         <h3 className="text-xl font-semibold">6. Contact Information</h3>
