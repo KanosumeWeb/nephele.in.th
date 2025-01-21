@@ -134,7 +134,42 @@ const TOS = () => (
       </h2>
       <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg space-y-4">
         <p className="text-gray-600">
-          Please read these terms carefully before using Nephele.
+          Welcome to Nephele, your notification bot on Discord. By using Nephele, you agree to comply with the following Terms of Service.
+        </p>
+
+        <h3 className="text-xl font-semibold">1. Service Description</h3>
+        <p className="text-gray-600">
+          Nephele is a Discord bot that provides notifications for Twitter and Bluesky on Discord. The bot helps users stay updated with the latest tweets and Bluesky updates from their favorite accounts directly in Discord.
+        </p>
+
+        <h3 className="text-xl font-semibold">2. User Responsibilities</h3>
+        <p className="text-gray-600">
+          Users agree to the following terms while using Nephele:
+        </p>
+        <ul className="list-disc pl-6 text-gray-600">
+          <li>No crypto-related accounts should be followed.</li>
+          <li>Users must not use the bot for any malicious activity.</li>
+          <li>Users must follow all applicable laws and regulations when using the bot.</li>
+        </ul>
+
+        <h3 className="text-xl font-semibold">3. Limitations of Liability</h3>
+        <p className="text-gray-600">
+          Nephele is provided "as is." We do not guarantee that the service will always be available, error-free, or uninterrupted. We are not liable for any damages arising from the use of Nephele.
+        </p>
+
+        <h3 className="text-xl font-semibold">4. Termination Rights</h3>
+        <p className="text-gray-600">
+          We reserve the right to terminate or suspend your access to Nephele at our discretion for violations of these terms or any other reason deemed necessary.
+        </p>
+
+        <h3 className="text-xl font-semibold">5. Governing Law</h3>
+        <p className="text-gray-600">
+          These Terms of Service are governed by the laws of your jurisdiction. Any disputes will be resolved under the jurisdiction of the relevant courts.
+        </p>
+
+        <h3 className="text-xl font-semibold">6. Contact Information</h3>
+        <p className="text-gray-600">
+          If you have any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@nephele.in.th" className="text-blue-500 hover:underline">support@nephele.in.th</a>.
         </p>
       </div>
     </div>
@@ -149,7 +184,47 @@ const Privacy = () => (
       </h2>
       <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg space-y-4">
         <p className="text-gray-600">
-          Your privacy is important to us. This policy outlines how we handle your data.
+          Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you use Nephele.
+        </p>
+
+        <h3 className="text-xl font-semibold">1. Collected Data</h3>
+        <p className="text-gray-600">
+          We collect the following types of data:
+        </p>
+        <ul className="list-disc pl-6 text-gray-600">
+          <li>Discord user ID</li>
+          <li>Commands issued to Nephele</li>
+          <li>Notification preferences (e.g., Twitter or Bluesky notifications)</li>
+        </ul>
+
+        <h3 className="text-xl font-semibold">2. Purpose of Data Collection</h3>
+        <p className="text-gray-600">
+          We collect data for the following purposes:
+        </p>
+        <ul className="list-disc pl-6 text-gray-600">
+          <li>To provide notifications to users</li>
+          <li>To improve the bot's functionality and user experience</li>
+          <li>For analytics purposes</li>
+        </ul>
+
+        <h3 className="text-xl font-semibold">3. Data Storage and Retention</h3>
+        <p className="text-gray-600">
+          Your data is stored securely and will be retained only as long as necessary to provide the service. You may request data deletion by contacting us.
+        </p>
+
+        <h3 className="text-xl font-semibold">4. Third-Party Services</h3>
+        <p className="text-gray-600">
+          We do not share your data with third parties except when required for service operation, such as through hosting providers.
+        </p>
+
+        <h3 className="text-xl font-semibold">5. User Rights</h3>
+        <p className="text-gray-600">
+          You have the right to request access to your data, request updates to your data, or request deletion of your data. To do so, please contact us at <a href="mailto:support@nephele.in.th" className="text-blue-500 hover:underline">support@nephele.in.th</a>.
+        </p>
+
+        <h3 className="text-xl font-semibold">6. Contact Information</h3>
+        <p className="text-gray-600">
+          If you have any questions or concerns about your privacy, please contact us at <a href="mailto:support@nephele.in.th" className="text-blue-500 hover:underline">support@nephele.in.th</a>.
         </p>
       </div>
     </div>
@@ -184,10 +259,6 @@ const Premium = () => (
             <li className="flex items-center">
               <Heart className="w-5 h-5 text-pink-400 mr-2" />
               <span>Unlimited notification</span>
-            </li>
-            <li className="flex items-center">
-              <Heart className="w-5 h-5 text-pink-400 mr-2" />
-              <span>Advanced filtering options</span>
             </li>
             <li className="flex items-center">
               <Heart className="w-5 h-5 text-pink-400 mr-2" />
