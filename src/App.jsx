@@ -88,8 +88,8 @@ const Website = () => {
             <div className="flex justify-between items-center text-sm text-gray-600">
               <span>© 2025 Nephele</span>
               <div className="space-x-4">
-                <a href="/tos" className="hover:text-pink-400">Terms</a>
-                <a href="/privacy" className="hover:text-pink-400">Privacy</a>
+                <a href="/tos" className="hover:text-pink-400">Terms of Services</a>
+                <a href="/privacy" className="hover:text-pink-400">Privacy Policy</a>
               </div>
             </div>
           </div>
