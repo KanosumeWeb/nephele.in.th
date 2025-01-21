@@ -1,102 +1,97 @@
 import React from 'react';
 import { Twitter, Crown, MessageCircle, Heart } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
-const Website = () => {
+// Navigation component extracted for cleaner code
+const Navigation = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
-  const renderContent = () => {
-    const path = location.pathname.slice(1); // Remove leading slash
-    switch (path) {
-      case 'home':
-        return <Home />;
-      case 'tos':
-        return <TOS />;
-      case 'privacy':
-        return <Privacy />;
-      case 'premium':
-        return <Premium />;
-      case 'support':
-        return <Support />;
-      default:
-        return <Home />;
-    }
-  };
-
   const handlePageChange = (page) => {
-    navigate(`/${page}`); // Use navigate instead of history.push
+    navigate(`/${page}`);
+    setShowMobileMenu(false);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-pink-100">
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm fixed w-full z-10 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-2">
-              {/* Updated to use favicon.ico */}
-              <img
-                src="/favicon.ico"
-                alt="Nephele Logo"
-                className="w-8 h-8"
-              />
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent">
-                Nephele
-              </span>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => handlePageChange(item)}
-                  className="text-gray-600 hover:text-pink-400 transition-colors"
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </button>
-              ))}
-            </div>
-            <div className="md:hidden">
+    <nav className="bg-white/80 backdrop-blur-sm fixed w-full z-10 shadow-sm">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex justify-between items-center py-4">
+          <div className="flex items-center space-x-2">
+            <img
+              src="/favicon.ico"
+              alt="Nephele Logo"
+              className="w-8 h-8"
+            />
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent">
+              Nephele
+            </span>
+          </div>
+          <div className="hidden md:flex space-x-8">
+            {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
               <button
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
+                key={item}
+                onClick={() => handlePageChange(item)}
                 className="text-gray-600 hover:text-pink-400 transition-colors"
               >
-                ☰
+                {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
-            </div>
+            ))}
           </div>
-          {showMobileMenu && (
-            <div className="md:hidden bg-white shadow-lg rounded-lg mt-2">
-              {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => {
-                    handlePageChange(item);
-                    setShowMobileMenu(false);
-                  }}
-                  className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400 transition-colors"
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <main className="pt-20 pb-12">{renderContent()}</main>
-
-      {/* Footer */}
-      <footer className="bg-white/80 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="text-center">
-            <p className="text-gray-600">© 2025 Nephele Bot. All rights reserved.</p>
+          <div className="md:hidden">
+            <button
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="text-gray-600 hover:text-pink-400 transition-colors"
+            >
+              ☰
+            </button>
           </div>
         </div>
-      </footer>
-    </div>
+        {showMobileMenu && (
+          <div className="md:hidden bg-white shadow-lg rounded-lg mt-2">
+            {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
+              <button
+                key={item}
+                onClick={() => handlePageChange(item)}
+                className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400 transition-colors"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+// Main Website component
+const Website = () => {
+  return (
+    <Router>
+      <div className="min-h-screen bg-gradient-to-b from-blue-100 to-pink-100">
+        <Navigation />
+        
+        <main className="pt-20 pb-12">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/tos" element={<TOS />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/premium" element={<Premium />} />
+            <Route path="/support" element={<Support />} />
+          </Routes>
+        </main>
+
+        <footer className="bg-white/80 backdrop-blur-sm">
+          <div className="max-w-6xl mx-auto px-4 py-8">
+            <div className="text-center">
+              <p className="text-gray-600">© 2025 Nephele Bot. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </Router>
   );
 };
 
