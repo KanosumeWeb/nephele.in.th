@@ -1,21 +1,12 @@
 import React from 'react';
 import { Twitter, Crown, MessageCircle, Heart } from 'lucide-react';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 
 // Navigation component extracted for cleaner code
 const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
-  // Navigation items with their routes and display names
-  const navItems = [
-    { route: 'home', label: 'Home' },
-    { route: 'tos', label: 'Terms of Service' },
-    { route: 'privacy', label: 'Privacy Policy' },
-    { route: 'premium', label: 'Premium' },
-    { route: 'support', label: 'Support' }
-  ];
 
   const handlePageChange = (page) => {
     navigate(`/${page}`);
@@ -37,13 +28,13 @@ const Navigation = () => {
             </span>
           </div>
           <div className="hidden md:flex space-x-8">
-            {navItems.map(({ route, label }) => (
+            {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
               <button
-                key={route}
-                onClick={() => handlePageChange(route)}
+                key={item}
+                onClick={() => handlePageChange(item)}
                 className="text-gray-600 hover:text-pink-400 transition-colors"
               >
-                {label}
+                {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
             ))}
           </div>
@@ -58,13 +49,13 @@ const Navigation = () => {
         </div>
         {showMobileMenu && (
           <div className="md:hidden bg-white shadow-lg rounded-lg mt-2">
-            {navItems.map(({ route, label }) => (
+            {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
               <button
-                key={route}
-                onClick={() => handlePageChange(route)}
+                key={item}
+                onClick={() => handlePageChange(item)}
                 className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400 transition-colors"
               >
-                {label}
+                {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
             ))}
           </div>
@@ -74,21 +65,44 @@ const Navigation = () => {
   );
 };
 
+// Legacy URL handler component
+const LegacyUrlHandler = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    // If the URL ends with .html
+    if (location.pathname.endsWith('.html')) {
+      // Remove .html and redirect
+      const newPath = location.pathname.replace('.html', '');
+      navigate(newPath, { replace: true });
+    }
+  }, [location, navigate]);
+
+  return null;
+};
+
 // Main Website component
 const Website = () => {
   return (
     <Router>
       <div className="min-h-screen bg-gradient-to-b from-blue-100 to-pink-100">
+        <LegacyUrlHandler />
         <Navigation />
         
         <main className="pt-20 pb-12">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/home.html" element={<Navigate to="/home" replace />} />
             <Route path="/tos" element={<TOS />} />
+            <Route path="/tos.html" element={<Navigate to="/tos" replace />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/privacy.html" element={<Navigate to="/privacy" replace />} />
             <Route path="/premium" element={<Premium />} />
+            <Route path="/premium.html" element={<Navigate to="/premium" replace />} />
             <Route path="/support" element={<Support />} />
+            <Route path="/support.html" element={<Navigate to="/support" replace />} />
           </Routes>
         </main>
 
