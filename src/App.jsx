@@ -8,6 +8,15 @@ const Navigation = () => {
   const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
+  // Navigation items with their routes and display names
+  const navItems = [
+    { route: 'home', label: 'Home' },
+    { route: 'tos', label: 'Terms of Service' },
+    { route: 'privacy', label: 'Privacy Policy' },
+    { route: 'premium', label: 'Premium' },
+    { route: 'support', label: 'Support' }
+  ];
+
   const handlePageChange = (page) => {
     navigate(`/${page}`);
     setShowMobileMenu(false);
@@ -28,13 +37,13 @@ const Navigation = () => {
             </span>
           </div>
           <div className="hidden md:flex space-x-8">
-            {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
+            {navItems.map(({ route, label }) => (
               <button
-                key={item}
-                onClick={() => handlePageChange(item)}
+                key={route}
+                onClick={() => handlePageChange(route)}
                 className="text-gray-600 hover:text-pink-400 transition-colors"
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+                {label}
               </button>
             ))}
           </div>
@@ -49,13 +58,13 @@ const Navigation = () => {
         </div>
         {showMobileMenu && (
           <div className="md:hidden bg-white shadow-lg rounded-lg mt-2">
-            {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
+            {navItems.map(({ route, label }) => (
               <button
-                key={item}
-                onClick={() => handlePageChange(item)}
+                key={route}
+                onClick={() => handlePageChange(route)}
                 className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400 transition-colors"
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+                {label}
               </button>
             ))}
           </div>
