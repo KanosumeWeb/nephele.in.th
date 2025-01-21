@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Twitter, Bot, Crown, MessageCircle, Bell, DiscordLogo, Mail, ExternalLink } from 'lucide-react';
+import { Heart, Twitter, Bot, Crown, MessageCircle, Bell, Discord, Mail, ExternalLink } from 'lucide-react';
 
 const Website = () => {
   const [currentPage, setCurrentPage] = React.useState('home');
