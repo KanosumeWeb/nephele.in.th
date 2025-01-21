@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Website = () => {
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
   const renderContent = () => {
@@ -26,7 +26,7 @@ const Website = () => {
   };
 
   const handlePageChange = (page) => {
-    history.push(`/${page}`);
+    navigate(`/${page}`); // Use navigate instead of history.push
   };
 
   return (
