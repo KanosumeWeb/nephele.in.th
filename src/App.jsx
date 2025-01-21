@@ -2,62 +2,44 @@ import React from 'react';
 import { Twitter, Crown, MessageCircle, Heart } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 
-// Navigation component extracted for cleaner code
-const Navigation = () => {
-  const location = useLocation();
+const Nav = () => {
+  const [showMenu, setShowMenu] = React.useState(false);
   const navigate = useNavigate();
-  const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
-  const handlePageChange = (page) => {
-    navigate(`/${page}`);
-    setShowMobileMenu(false);
-  };
+  const nav = (to) => { navigate(to); setShowMenu(false); };
 
   return (
     <nav className="bg-white/80 backdrop-blur-sm fixed w-full z-10 shadow-sm">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center space-x-2">
-            <img
-              src="/favicon.ico"
-              alt="Nephele Logo"
-              className="w-8 h-8"
-            />
+        <div className="flex justify-between items-center h-16">
+          <button onClick={() => nav('/')} className="flex items-center space-x-2">
+            <img src="/favicon.ico" alt="Logo" className="w-8 h-8" />
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent">
               Nephele
             </span>
+          </button>
+          
+          <div className="hidden md:flex space-x-6">
+            <button onClick={() => nav('/premium')} className="text-gray-600 hover:text-pink-400">Premium</button>
+            <button onClick={() => nav('/support')} className="text-gray-600 hover:text-pink-400">Support</button>
           </div>
-          <div className="hidden md:flex space-x-8">
-            {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
-              <button
-                key={item}
-                onClick={() => handlePageChange(item)}
-                className="text-gray-600 hover:text-pink-400 transition-colors"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </button>
-            ))}
-          </div>
-          <div className="md:hidden">
-            <button
-              onClick={() => setShowMobileMenu(!showMobileMenu)}
-              className="text-gray-600 hover:text-pink-400 transition-colors"
-            >
-              ☰
-            </button>
-          </div>
+
+          <button onClick={() => setShowMenu(!showMenu)} className="md:hidden text-gray-600">☰</button>
         </div>
-        {showMobileMenu && (
-          <div className="md:hidden bg-white shadow-lg rounded-lg mt-2">
-            {['home', 'tos', 'privacy', 'premium', 'support'].map((item) => (
-              <button
-                key={item}
-                onClick={() => handlePageChange(item)}
-                className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400 transition-colors"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </button>
-            ))}
+
+        {showMenu && (
+          <div className="md:hidden absolute w-full left-0 bg-white shadow-lg">
+            <button onClick={() => nav('/premium')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
+              Premium
+            </button>
+            <button onClick={() => nav('/support')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
+              Support
+            </button>
+            <button onClick={() => nav('/tos')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
+              Terms
+            </button>
+            <button onClick={() => nav('/privacy')} className="block w-full text-left px-4 py-2 text-gray-600 hover:text-pink-400">
+              Privacy
+            </button>
           </div>
         )}
       </div>
@@ -65,36 +47,31 @@ const Navigation = () => {
   );
 };
 
-// Legacy URL handler component
 const LegacyUrlHandler = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    // If the URL ends with .html
     if (location.pathname.endsWith('.html')) {
-      // Remove .html and redirect
-      const newPath = location.pathname.replace('.html', '');
-      navigate(newPath, { replace: true });
+      navigate(location.pathname.replace('.html', ''), { replace: true });
     }
   }, [location, navigate]);
 
   return null;
 };
 
-// Main Website component
 const Website = () => {
   return (
     <Router>
       <div className="min-h-screen bg-gradient-to-b from-blue-100 to-pink-100">
         <LegacyUrlHandler />
-        <Navigation />
+        <Nav />
         
         <main className="pt-20 pb-12">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/home.html" element={<Navigate to="/home" replace />} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="/home.html" element={<Navigate to="/" replace />} />
             <Route path="/tos" element={<TOS />} />
             <Route path="/tos.html" element={<Navigate to="/tos" replace />} />
             <Route path="/privacy" element={<Privacy />} />
@@ -107,9 +84,13 @@ const Website = () => {
         </main>
 
         <footer className="bg-white/80 backdrop-blur-sm">
-          <div className="max-w-6xl mx-auto px-4 py-8">
-            <div className="text-center">
-              <p className="text-gray-600">© 2025 Nephele Bot. All rights reserved.</p>
+          <div className="max-w-6xl mx-auto px-4 py-6">
+            <div className="flex justify-between items-center text-sm text-gray-600">
+              <span>© 2025 Nephele</span>
+              <div className="space-x-4">
+                <a href="/tos" className="hover:text-pink-400">Terms</a>
+                <a href="/privacy" className="hover:text-pink-400">Privacy</a>
+              </div>
             </div>
           </div>
         </footer>
@@ -117,6 +98,7 @@ const Website = () => {
     </Router>
   );
 };
+
 
 const Home = () => (
   <div className="max-w-6xl mx-auto px-4">
