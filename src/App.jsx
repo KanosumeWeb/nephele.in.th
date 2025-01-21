@@ -117,7 +117,7 @@ const Home = () => (
         </div>
       </div>
       <a
-        href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot"
+        href="https://discord.com/oauth2/authorize?client_id=1129313213041877023&permissions=8&scope=bot"
         target="_blank"
         rel="noopener noreferrer"
         className="mt-8 inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all"
