@@ -19,6 +19,7 @@ const Nav = () => {
           </button>
           
           <div className="hidden md:flex space-x-6">
+            <button onClick={() => nav('/home')} className="text-gray-600 hover:text-pink-400">Home</button>
             <button onClick={() => nav('/premium')} className="text-gray-600 hover:text-pink-400">Premium</button>
             <button onClick={() => nav('/support')} className="text-gray-600 hover:text-pink-400">Support</button>
           </div>
