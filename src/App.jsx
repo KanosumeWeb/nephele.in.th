@@ -55,12 +55,12 @@ const LegacyUrlHandler = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    if (location.pathname.endsWith('.html')) {
-      navigate(location.pathname.replace('.html', ''), { replace: true });
+  useEffect(() => {
+    if (location.pathname.endsWith(".html")) {
+      navigate(location.pathname.replace(".html", ""), { replace: true });
     }
-    if (location.pathname.endsWith('ggd')) {
-      window.location.href === "https://goose-goose-duck-production.up.railway.app";
+    if (location.pathname.endsWith("ggd")) {
+      window.location.href = "https://goose-goose-duck-production.up.railway.app";
     }
   }, [location, navigate]);
 
