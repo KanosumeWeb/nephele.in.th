@@ -59,6 +59,9 @@ const LegacyUrlHandler = () => {
     if (location.pathname.endsWith('.html')) {
       navigate(location.pathname.replace('.html', ''), { replace: true });
     }
+    if (location.pathname.endsWith('ggd')) {
+      navigate(window.location.href === "https://goose-goose-duck-production.up.railway.app");
+    }
   }, [location, navigate]);
 
   return null;
