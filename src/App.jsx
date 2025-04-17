@@ -406,7 +406,7 @@ const Support = () => (
             <span>
               Join our Discord:{" "}
               <a
-                href="https://discord.gg/nephele-interactive"
+                href="https://discord.gg/sMUn5ESwPV"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline"
